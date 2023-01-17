@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_navigation"
+    app:startDestination="@id/blankFragment2">
+
+    <fragment
+        android:id="@+id/blankFragment"
+        android:name="uz.jahongir.databasenewproject.fragments.BlankFragment"
+        android:label="Adding Contact"
+        tools:layout="@layout/fragment_blank" >
+        <action
+            android:id="@+id/action_blankFragment_to_blankFragment2"
+            app:destination="@id/blankFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/blankFragment2"
+        android:name="uz.jahongir.databasenewproject.fragments.BlankFragment2"
+        android:label="Contacts List"
+        tools:layout="@layout/fragment_blank2" >
+        <action
+            android:id="@+id/action_blankFragment2_to_blankFragment"
+            app:destination="@id/blankFragment" />
+        <action
+            android:id="@+id/action_blankFragment2_to_editFragment"
+            app:destination="@id/editFragment" />
+        <argument
+            android:name="currentContactName"
+            app:argType="uz.jahongir.databasenewproject.db.MyContact[]"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="uz.jahongir.databasenewproject.fragments.EditFragment"
+        android:label="Editing Contact"
+        tools:layout="@layout/fragment_edit" >
+        <action
+            android:id="@+id/action_editFragment_to_blankFragment2"
+            app:destination="@id/blankFragment2" />
+        <argument
+            android:name="currentContact"
+            app:argType="uz.jahongir.databasenewproject.db.MyContact" />
+    </fragment>
+</navigation>
